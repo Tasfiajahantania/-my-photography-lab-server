@@ -44,6 +44,14 @@ async function run() {
       const result = await reviewCollection.insertOne(review);
       res.send(result);
     });
+    app.get("/review/:id", async (req, res) => {
+      query = {
+        service: req.params.id,
+      };
+      const cursor = reviewCollection.find(query);
+      const reviews = await cursor.toArray();
+      res.send(reviews);
+    });
   } finally {
   }
 }
