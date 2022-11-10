@@ -65,7 +65,7 @@ async function run() {
 }
 run().catch((error) => console.error(error));
 app.get("/", (req, res) => {
-  res.send("photography server is running");
+  res.send("photography server is running....");
 });
 
 app.listen(port, () => {
