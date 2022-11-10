@@ -45,12 +45,20 @@ async function run() {
       res.send(result);
     });
     app.get("/review/:id", async (req, res) => {
-      query = {
+      const query = {
         service: req.params.id,
       };
       const cursor = reviewCollection.find(query);
       const reviews = await cursor.toArray();
       res.send(reviews);
+    });
+    app.get("/my-review/:email", async (req, res) => {
+      const query = {
+        email: req.params.email,
+      };
+      const cursor = reviewCollection.find(query);
+      const myReview = await cursor.toArray();
+      res.send(myReview);
     });
   } finally {
   }
