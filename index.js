@@ -29,9 +29,7 @@ async function run() {
       const services = await cursor.limit(3).toArray();
       res.send(services);
     });
-    const cursor = reviewCollection.find(query).sort({ total_time: -1 });
-    const reviews = await cursor.toArray();
-    res.send(reviews);
+
     app.get("/services-all", async (req, res) => {
       const query = {};
       const cursor = serviceCollection.find(query);
@@ -70,9 +68,9 @@ async function run() {
 }
 run().catch((error) => console.error(error));
 app.get("/", (req, res) => {
-  res.send("photography server is running....");
+  res.send("photography server is running.......");
 });
 
 app.listen(port, () => {
-  console.log(`server is running... on ${port}`);
+  console.log(`server is running on ${port}`);
 });
